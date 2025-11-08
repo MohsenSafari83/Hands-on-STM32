@@ -43,7 +43,70 @@ Now let's take a look at the pinout of this chip, taken from the datasheet:
 
 ![Image of STM32F103C8T6 pinout diagram](images/pinout-stm.png)
 
+### General Purpose Input/Output (GPIO) Overview
 
+This section covers the fundamental role of GPIO pins in microcontrollers, their functionality, common uses, and the specific organization on the STM32F103C8T6 (Blue Pill) board.
+
+## What is GPIO?
+
+**GPIO (General Purpose Input/Output)** pins serve as the primary interface between the microcontroller (MCU) and the external world. They are versatile pins found on integrated circuits and circuit boards that can be used for various tasks, such as reading or sending digital signals. They make it possible to interact with sensors, actuators, and communication protocols.
+
+The core functionality of a GPIO pin—whether it acts as an **input** (reading data) or an **output** (sending data)—is controlled entirely by **software**. A key feature of GPIO is the ability to dynamically change its function while the program is running by adjusting specific configuration settings (registers) within the MCU.
+
+### Common Uses for GPIO Pins:
+
+* **Reading** digital or analog values from external sensors.
+* **Controlling** simple output devices (e.g., turning on/off LEDs, relays, motors).
+* **Communicating** with other devices using single-wire protocols.
+* **Handling Interrupts** (signals that require immediate, non-blocking attention from the CPU).
+
+---
+
+##  GPIO Pin Modes
+
+The flexibility of STM32 GPIO pins comes from their ability to be configured into different operational modes via internal registers:
+
+| Mode | Description | Common Use Cases |
+| :---: | :--- | :--- |
+| **Input** | Reads the logic level (high/low) from an external source. | Buttons, sensors, external signals |
+| **Output** | Drives the pin high (VDD) or low (GND). | LEDs, relays, motor drivers, external devices |
+| **Alternate Function** | Connects the pin to an on-chip peripheral (UART, SPI, I²C, etc.). | Communication interfaces, PWM, timers |
+| **Analog** | Enables the pin for analog signals (ADC or DAC). | Analog sensors, voltage outputs |
+| **Interrupt** | Triggers an event on signal transition (rising/falling edge). | Button presses, external event detection |
+
+### Supplementary Pin Configurations
+
+| Configuration | Description | Common Use Cases |
+| :---: | :--- | :--- |
+| **Pull-up/Pull-down** | Internal resistors to set default high/low when input is floating. | Pull-up for buttons, pull-down for inputs |
+| **Open-drain** | Can only pull low; requires an external resistor to pull high. | I²C communication, multiple devices sharing a signal line |
+
+---
+
+##  Commonly Used GPIO Pins on Blue Pill (STM32F103C8T6)
+
+Understanding which pins are multiplexed with common peripherals is critical for development:
+
+| Pin(s) | Function | Notes |
+| :---: | :--- | :--- |
+| **PC13** | **Onboard LED** | Typically connected to the onboard user LED (Active-Low). |
+| **PA0** | **ADC Channel** | Used for Analog-to-Digital Conversion (ADC) input. |
+| **PA9 / PA10** | **USART1 (TX/RX)** | Standard pins for serial communication. |
+| **PB6 / PB7** | **I2C1 (SCL/SDA)** | Used for I²C communication. |
+| **PA5, PA6, PA7** | **SPI1 (SCK, MISO, MOSI)** | Used for high-speed Serial Peripheral Interface communication. |
+
+***Voltage Note:** The GPIO pins on the STM32F103C8T6 are **3.3V tolerant**. **Connecting 5V directly to the GPIO pins can damage the microcontroller.** You must use a logic level shifter for 5V signals.*
+
+---
+
+## STM32F103C8T6 GPIO Organization
+
+The STM32F103C8T6 microcontroller provides a total of **37 GPIO pins** available for general use, which are organized into three alphabetical ports:
+
+1.  **Port A (GPIOA):** PA0 to PA15 (16 pins)
+2.  **Port B (GPIOB):** PB0 to PB15 (16 pins)
+3.  **Port C (GPIOC):** PC13 to PC15 (3 pins)
+---
 Unlike Arduino where pins are referred to by simply a number (pin 1, pin 2...), **GPIO pins** on bare microcontrollers like STM32 usually have a **port** and **number** associated with them. A **port** is a set of pins that are organized internally and can be controlled together.
 
 In STM32, GPIO ports are named alphabetically starting from **A**, and each port can have up to 16 pins from **0** to **15**.
