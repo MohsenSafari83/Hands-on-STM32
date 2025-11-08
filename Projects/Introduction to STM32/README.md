@@ -293,9 +293,9 @@ These allow virtual STM32 hardware + external components.
 
 For deeper study and more detailed information regarding the Blue Pill hardware and HAL library concepts, please refer to the following resources:
 
-* **Getting Started STM32 Blue Pill Develop Board:** [https://microdigisoft.com/getting-started-stm32-blue-pill-develop-board/](https://microdigisoft.com/getting-started-stm32-blue-pill-develop-board/)
-* **STM32F103C8T6 Blue Pill Board GPIO Configuration:** [https://microdigisoft.com/stm32f103c8t6-blue-pill-board-gpio-configuration/](https://microdigisoft.com/stm32f103c8t6-blue-pill-board-gpio-configuration/)
-* **STM32 HAL Library Tutorial and Examples:** [https://deepbluembedded.com/stm32-hal-library-tutorial-examples/](https://deepbluembedded.com/stm32-hal-library-tutorial-examples/)
+* [**Getting Started STM32 Blue Pill Develop Board:** ](https://microdigisoft.com/getting-started-stm32-blue-pill-develop-board/)
+* [**STM32F103C8T6 Blue Pill Board GPIO Configuration:**](https://microdigisoft.com/stm32f103c8t6-blue-pill-board-gpio-configuration/)
+* [**STM32 HAL Library Tutorial and Examples:** ](https://deepbluembedded.com/stm32-hal-library-tutorial-examples/)
 
 
 
