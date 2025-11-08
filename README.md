@@ -30,12 +30,15 @@ Each project includes the necessary source code, configuration files (e.g., `.io
 ## STM32 Projects Portfolio Roadmap (Sorted by Learning Focus)
 
 | Category | Project Title | Description | Difficulty | Link |
+| :---: | :---: | :--- | :---: | :---: |
 
 
 ---
 
 🟢 **Beginner** → Focuses on single peripheral control and basic setup.
+
 🟡 **Intermediate** → Involves two or more peripherals, interrupts, or timing logic.
+
 🔴 **Advanced** → Includes complex protocols (I2C, SPI), DMA, or RTOS implementation.
 
 ---
