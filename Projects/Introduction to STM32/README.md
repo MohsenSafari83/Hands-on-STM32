@@ -1,4 +1,4 @@
-# 01 - Introduction to STM32 & Blue Pill Basics (STM32F103C8T6)
+# Introduction to STM32 & Blue Pill Basics (STM32F103C8T6)
 
 This introductory section is dedicated to covering the fundamental concepts and hardware knowledge necessary to begin bare-metal and HAL programming on the **STM32F103C8T6 (Blue Pill)** development board.
 
@@ -41,7 +41,7 @@ Here is its specs:
 Now let's take a look at the pinout of this chip, taken from the datasheet:
 
 
-![Image of STM32F103C8T6 pinout diagram](images/pinout-stm.webp)
+![Image of STM32F103C8T6 pinout diagram](images/pinout-stm.png)
 
 
 Unlike Arduino where pins are referred to by simply a number (pin 1, pin 2...), **GPIO pins** on bare microcontrollers like STM32 usually have a **port** and **number** associated with them. A **port** is a set of pins that are organized internally and can be controlled together.
