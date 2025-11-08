@@ -41,7 +41,7 @@ Here is its specs:
 Now let's take a look at the pinout of this chip, taken from the datasheet:
 
 
-![Image of STM32F103C8T6 pinout diagram](images/stm-pinout.jpg)
+![Image of STM32F103C8T6 pinout diagram](images/pinout-stm.jpg)
 
 
 Unlike Arduino where pins are referred to by simply a number (pin 1, pin 2...), **GPIO pins** on bare microcontrollers like STM32 usually have a **port** and **number** associated with them. A **port** is a set of pins that are organized internally and can be controlled together.
