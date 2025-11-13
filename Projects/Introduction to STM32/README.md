@@ -266,6 +266,61 @@ So:
 
 [Click me](https://github.com/YOUR_USERNAME/hands-on-stm32/blob/main/Docs/Tool-Setup-Links.md) to download the latest version of STM32CubeIDE (which includes CubeMX) from the ST website.
 
+# Difference Between STM32CubeMX and STM32CubeIDE
+
+This is a very common and important question. The main difference between these two tools lies in their purpose and functionality.
+
+---
+
+##  Overview
+
+| Feature | **STM32CubeMX** | **STM32CubeIDE** |
+|----------|-----------------|------------------|
+| **Main Role** | Hardware configuration and code generation | Full development environment (IDE) |
+| **Tool Type** | Standalone configuration tool | Integrated Development Environment (Eclipse-based) |
+| **Key Features** | - Graphical pin configuration (Pinout)  <br> - Clock and timing setup  <br> - Peripheral activation and configuration (UART, ADC, etc.)  <br> - Automatic code generation (Initialization Code) | - Includes all CubeMX configuration features  <br> - Code editor  <br> - Compiler for building binaries  <br> - Debugger (e.g., ST-Link)  <br> - Build and memory analyzers |
+| **Output** | Project files for various IDEs (Keil, IAR, CubeIDE, etc.) | Executable output (HEX/BIN) for flashing onto the MCU |
+| **Independence** | IDE-agnostic (can export to different IDEs) | All-in-one integrated workflow |
+
+---
+
+##  Summary
+
+- **STM32CubeMX** is a graphical configuration tool for initializing and generating MCU setup code.  
+- **STM32CubeIDE** is a complete development environment that already includes all CubeMX features built in.  
+
+When you install **CubeIDE**, you already have **CubeMX** integrated inside it.  
+You can configure your MCU, write your code, compile, and debug — all in one place.
+
+---
+
+##  Why CubeMX Still Exists Separately
+
+Even though CubeIDE already includes CubeMX, the standalone version of CubeMX remains useful for a few reasons:
+
+1. **Support for Other IDEs**  
+   Developers who prefer working with Keil, IAR, or VS Code can use CubeMX to generate configuration code compatible with those environments.
+
+2. **Separation of Configuration and Development**  
+   Some teams prefer keeping the hardware configuration (CubeMX) separate from software development (IDE) for cleaner workflows.
+
+3. **Independent Updates**  
+   CubeMX is sometimes updated earlier than CubeIDE to support the latest STM32 MCUs and HAL drivers.
+
+---
+
+## ✅ Conclusion
+
+If you are using **STM32CubeIDE**, you **do not need to install CubeMX separately**.
+
+However, if you plan to work with **other IDEs** (Keil, IAR, etc.), the standalone CubeMX tool remains very useful.
+
+---
+
+### TL;DR
+> 🟢 Use **CubeIDE only** → no need for CubeMX.  
+> 🟡 Use **Keil/IAR/other IDEs** → install CubeMX separately.
+
 ## STM32 Hardware Abstraction Layer (HAL) Drivers
 
 The **STM32 Hardware Abstraction Layer (HAL)** is an embedded software abstraction layer developed by STMicroelectronics. Its primary purpose is ensuring **maximized portability** across the entire family of STM32 microcontrollers.
