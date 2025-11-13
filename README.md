@@ -31,7 +31,7 @@ Each project includes the necessary source code, configuration files (e.g., `.io
 
 | Category | Project Title | Description | Difficulty | Link |
 |:---:|:---:|:---|:---:|:---:|
-| Getting Started | 01 - Introduction to STM32 | Basics of STM32, Blue Pill board, CubeIDE & CubeMX setup |🟢 **Beginner**| [Introduction to STM32 ](https://github.com/MohsenSafari83/Hands-on-STM32/tree/main/Projects/Introduction%20to%20STM32) |
+| Getting Started | 01 - Introduction to STM32 | Basics of STM32, Blue Pill board, CubeIDE & CubeMX setup |🟢 Beginner| [Introduction to STM32 ](https://github.com/MohsenSafari83/Hands-on-STM32/tree/main/Projects/Introduction%20to%20STM32) |
 
 
 
