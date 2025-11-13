@@ -4,12 +4,47 @@ This introductory section is dedicated to covering the fundamental concepts and 
 
 Understanding these concepts is crucial before diving into peripheral configuration and coding.
 
-## Learning Objectives
+---
+#  Table of Contents
 
-* Understand the naming convention and core specifications of the STM32F103C8T6 MCU.
-* Identify the main components on the Blue Pill board and their functions (e.g., PC13 LED, BOOT jumpers).
-* Grasp the chip's pin naming convention and key non-GPIO pins.
-* Understand the role of STM32CubeMX and the HAL Libraries.
+- [Introduction to STM32 & Blue Pill Basics (STM32F103C8T6)](#introduction-to-stm32--blue-pill-basics-stm32f103c8t6)
+  - [Learning Objectives](#learning-objectives)
+  - [The Chip](#the-chip)
+    - [MCU Naming Convention Breakdown](#mcu-naming-convention-breakdown)
+  - [Pin Naming Convention](#pin-naming-convention)
+    - [General Purpose Input/Output (GPIO) Overview](#general-purpose-inputoutput-gpio-overview)
+    - [What is GPIO?](#what-is-gpio)
+    - [GPIO Pin Modes](#gpio-pin-modes)
+    - [Supplementary Pin Configurations](#supplementary-pin-configurations)
+    - [Commonly Used GPIO Pins on Blue Pill](#commonly-used-gpio-pins-on-blue-pill-stm32f103c8t6)
+    - [STM32F103C8T6 GPIO Organization](#stm32f103c8t6-gpio-organization)
+  - [The Dev Board (Blue Pill)](#the-dev-board-blue-pill)
+  - [ST-LINK/V2 Programmer (for STM32 boards)](#st-linkv2-programmer-for-stm32-boards)
+    - [What it is](#what-it-is)
+    - [Why you need it](#why-you-need-it)
+    - [ST-LINK PinOut](#st-link-pinout)
+    - [How to connect to a Blue Pill (STM32F103 board)](#how-to-connect-to-a-blue-pill-stm32f103-board)
+    - [STM32CubeIDE Setup](#stm32cubeide-setup)
+    - [Troubleshooting](#troubleshooting)
+  - [JTAG vs SWD (Debug Interfaces)](#jtag-vs-swd-debug-interfaces)
+    - [What is JTAG?](#what-is-jtag)
+    - [Difference Between JTAG and SWD](#difference-between-jtag-and-swd)
+    - [Why SWD Is Used for STM32](#-why-swd-is-used-for-stm32)
+  - [STM32CubeMX](#stm32cubemx)
+  - [Difference Between STM32CubeMX and STM32CubeIDE](#difference-between-stm32cubemx-and-stm32cubeide)
+    - [Why CubeMX Still Exists Separately](#why-cubemx-still-exists-separately)
+  - [STM32 Hardware Abstraction Layer (HAL) Drivers](#stm32-hardware-abstraction-layer-hal-drivers)
+    - [The Role of HAL in Development](#the-role-of-hal-in-development)
+    - [Key HAL GPIO APIs](#key-hal-gpio-apis)
+    - [Detailed Function Description: HAL_GPIO_Init()](#detailed-function-description-hal_gpio_init)
+  - [Simulation and Debugging Options for STM32](#-simulation-and-debugging-options-for-stm32)
+    - [1) Software Simulation in STM32CubeIDE](#1software-simulation-in-stm32cubeide-recommended-for-logic)
+    - [2) Virtual Circuit Simulation Platforms](#2-virtual-circuit-simulation-platforms)
+      - [Wokwi — Highly Recommended for STM32 Blue Pill](#a--wokwi--highly-recommended-for-stm32-blue-pill)
+      - [Proteus — Professional Option](#b--proteus--professional-option)
+    - [Recommended Workflow](#-recommended-workflow)
+  - [References and Documentation Links](#references-and-documentation-links)
+
 
 ---
 
