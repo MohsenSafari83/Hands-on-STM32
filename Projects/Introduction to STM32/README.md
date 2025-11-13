@@ -142,7 +142,123 @@ All in all a clean, simple, and versatile little board. Something to note:
 * Don't worry about the **BOOT0** selector, leave it on the default **GND side** (aka normal startup: running user code from Flash Memory).
 
 ---
+## ST-LINK/V2 Programmer (for STM32 boards)
 
+###  What it is  
+The **ST-LINK/V2** is an official hardware debugger and programmer from STMicroelectronics.  
+It connects to your PC via USB and lets you **flash**, **debug**, and **analyze** STM32 microcontrollers directly from tools like **STM32CubeIDE**.
+---
+
+###  Why you need it  
+- Upload compiled code (firmware) to the STM32 flash memory.  
+- Debug applications: step through code, set breakpoints, inspect registers, watch variables.  
+- Works natively with **STM32CubeIDE**, **Keil**, **IAR**, and **OpenOCD**.  
+- Reliable, fast, and widely supported across STM32 families.
+
+---
+### ST-LINK PinOut
+
+![pinout](images/st-link-pinout.jpg)
+
+---
+###  How to connect to a “Blue Pill” (STM32F103 board)
+
+![connect st-link to blue pill ](images/st-linkv2.jpg)
+
+Connect the following pins between your **ST-LINK/V2** and the **Blue Pill** board:
+
+| ST-LINK/V2 Pin | Blue Pill Pin | Description |
+|----------------|----------------|--------------|
+| **3.3 V** | 3.3 V | Power supply (optional if USB powers the board) |
+| **GND** | GND | Common ground |
+| **SWDIO** | PA13 (SWDIO) | Serial Wire Debug data line |
+| **SWCLK** | PA14 (SWCLK) | Serial Wire Debug clock line |
+| *(optional)* **NRST** | NRST | Reset line for “connect under reset” mode |
+
+#### Boot configuration:
+
+| Jumper | Position | Function |
+|---------|-----------|-----------|
+| **BOOT0** | GND (LOW) | Boot from Flash |
+| **BOOT1** | GND (LOW) | Usually fixed to GND |
+
+---
+
+###  STM32CubeIDE Setup
+
+1. Open your project in **STM32CubeIDE**.  
+2. Go to  **Run → Debug Configurations**...
+3. Select your project → **Debugger** tab.  
+4. Ensure these settings:  
+- **Interface:** SWD  
+- **Connection:** ST-LINK (OpenOCD) or ST-LINK GDB Server  
+5. (Optional) Enable **“Connect under reset”** if flashing fails.
+
+Then click **Debug** or **Run** — CubeIDE will automatically build and flash your code onto the STM32 board.
+
+---
+
+### Troubleshooting
+
+| Issue | Possible Cause / Solution |
+|--------|---------------------------|
+| `No STM32 target found!` | Check SWDIO/SWCLK/GND connections, ensure power and correct BOOT0 setting. |
+| Code doesn’t run after flashing | Verify BOOT0=0, reset the board, or use “Connect under reset”. |
+| `main.c` not generated | Run `Project → Generate Code` and ensure “Enable code generation” is checked. |
+| ST-LINK not detected | Install STMicroelectronics driver: **STSW-LINK009**. |
+
+---
+
+###  Summary
+Once the ST-LINK/V2 is properly connected and configured, you can:
+
+- Build and flash STM32 projects directly from CubeIDE  
+- Use breakpoints and step debugging  
+- Inspect peripherals and memory in real time  
+
+>  Recommended interface for all STM32 development boards, including Blue Pill, Nucleo, and Discovery series.
+
+---
+
+##  JTAG vs SWD (Debug Interfaces)
+
+### What is JTAG?
+
+**JTAG** stands for **Joint Test Action Group** —  
+it’s a **hardware debugging and programming interface standard** used for microcontrollers, processors, and FPGAs.
+
+In simple terms:  
+it’s a “hidden port” inside the microcontroller that allows you to:
+
+- Upload code to the chip (program)
+- Inspect registers and memory
+- Step through code (debug)
+- Diagnose hardware issues
+
+---
+
+## Difference Between JTAG and SWD
+
+| Feature | **JTAG** | **SWD (Serial Wire Debug)** |
+|----------|-----------|-----------------------------|
+| Number of wires | 4–5 | Only 2 |
+| Speed | Moderate | Usually faster |
+| Typical use | Large ARM/FPGA chips | ARM Cortex-M (like STM32) |
+| Pins | TDI, TDO, TCK, TMS, TRST | SWDIO, SWCLK |
+| Pin usage | Higher | Minimal |
+| Used on | Advanced chips and production testing | STM32, Nucleo, Discovery boards |
+
+---
+
+## 🔹 Why SWD Is Used for STM32
+
+STM32 microcontrollers are based on **ARM Cortex-M cores**,  
+and ARM designed **SWD** as a simpler, lighter replacement for JTAG.
+
+So:
+
+> For Blue Pill, Nucleo, and Discovery boards — always use **SWD**, not JTAG.
+---
 ## STM32CubeMX
 
 **STM32CubeMX** is an interactive configuration tool and code generator provided by STMicroelectronics. It lets you set up the microcontroller's peripherals, clock tree, and pin assignments in a straightforward graphical interface. The tool then generates the initialization C code based on your settings, greatly simplifying the project setup phase.
