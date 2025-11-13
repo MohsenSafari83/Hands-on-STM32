@@ -218,6 +218,7 @@ Once the ST-LINK/V2 is properly connected and configured, you can:
 
 >  Recommended interface for all STM32 development boards, including Blue Pill, Nucleo, and Discovery series.
 
+[Usage ST-LINK V2 Tutorial](https://www.youtube.com/watch?v=NAWpqNjOGlc)
 ---
 
 ##  JTAG vs SWD (Debug Interfaces)
