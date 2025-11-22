@@ -128,7 +128,7 @@ Connect the **ST-Link V2 programmer** to the USB port and use its SWD (Serial Wi
 * **SWDIO** $\rightarrow$ **SWDIO (Pin A13)**
 * **VCC/3.3V** $\rightarrow$ **3.3V** (This powers the board; optional if powered via USB, but recommended for stability.)
 
-![Programming Connection](images/)
+![Programming Connection](images/st-linkv2-wiring.jpg)
 
 ### 2. LED Circuit Connection
 
