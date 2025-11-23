@@ -136,7 +136,7 @@ Connect the **LED** to the configured output pin (**PA8**) using a **current-lim
 
 * **PA8** $\rightarrow$ **Resistor** $\rightarrow$ **LED Anode** (Longer Leg) $\rightarrow$ **LED Cathode** (Shorter Leg) $\rightarrow$ **GND**
 
-![sldf](images/final-result.mp4)
+![sldf](images/final-result-ezgif.com-gif-to-webp-converter.webp)
 
 ---
 
