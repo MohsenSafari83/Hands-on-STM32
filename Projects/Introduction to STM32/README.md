@@ -235,7 +235,7 @@ Then click **Debug** or **Run** — CubeIDE will automatically build and flash y
 
 ### Troubleshooting
 
-| Issue | Possible Cause / Solution |
+| Issue | Possible Cause / Solution | 
 |--------|---------------------------|
 | `No STM32 target found!` | Check SWDIO/SWCLK/GND connections, ensure power and correct BOOT0 setting. |
 | Code doesn’t run after flashing | Verify BOOT0=0, reset the board, or use “Connect under reset”. |
@@ -244,7 +244,7 @@ Then click **Debug** or **Run** — CubeIDE will automatically build and flash y
 
 ---
 
-###  Summary
+###  Summary 
 Once the ST-LINK/V2 is properly connected and configured, you can:
 
 - Build and flash STM32 projects directly from CubeIDE  

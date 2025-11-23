@@ -12,7 +12,7 @@ The purpose of this repo is to progress from **microcontroller fundamentals** an
 This repository will continue to grow as new projects, tutorials, and deep-dives are added.
 
 ---
-
+ 
 ##  Repository Overview
 
 This repository contains a collection of structured mini-projects and practical examples, covering:
