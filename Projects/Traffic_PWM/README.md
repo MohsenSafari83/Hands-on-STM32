@@ -2,6 +2,26 @@
 
 This project demonstrates how to build a traffic light system using RGB LEDs and PWM on the STM32F103C8 (Blue Pill). The purpose of the project is to understand essential STM32 concepts including PWM generation, timer configuration, GPIO mapping, and real-time behavior through timer-based state switching.
 
+# Table of Contents
+
+1. [Overview](#overview)
+2. [Concepts Demonstrated in This Project](#concepts-demonstrated-in-this-project)
+   - [PWM (Pulse Width Modulation)](#1-pwm-pulse-width-modulation)
+   - [Timer Configuration (TIM1)](#2-timer-configuration-tim1)
+   - [GPIO Alternate Function Mapping](#3-gpio-alternate-function-mapping)
+   - [Duty Cycle Control](#4-duty-cycle-control)
+   - [Timer-Based State Machine](#5-timer-based-state-machine-traffic-light-logic)
+3. [PWM Configuration Summary](#pwm-configuration-summary-cubemx)
+4. [Firmware Steps](#firmware-steps)
+   - [Initialize TIM1 and GPIO](#1-initialize-tim1-and-gpio)
+   - [Start PWM Outputs](#2-start-pwm-outputs)
+   - [Update LED Intensity](#3-update-led-intensity)
+5. [Hardware Connections](#hardware-connections)
+6. [Required Parts](#required-parts)
+7. [Complete PWM Code Example](#complete-pwm-code-runtime-duty-cycle-update)
+8. [Notes and Best Practices](#notes-and-best-practices)
+9. [References](#references)
+
 ---
 
 ## Overview
@@ -120,9 +140,66 @@ HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, duty);  // Blue
 
 ---
 
+## Required Parts
+
+To implement this project, you will need the following hardware components:
+
+- **Microcontroller:** STM32F103C8T6 (Blue Pill)
+- **Programmer/Debugger:** ST-Link V2
+- **LED:** RGB LED (Common Cathode or Common Anode)
+- **Resistors:** Current limiting resistors (e.g., $150 \Omega$ to $330 \Omega$ for 3.3V operation)
+- **Wiring:** Breadboard and jumper wires
+
+---
+
+## Complete PWM Code (Runtime Duty Cycle Update)
+
+The following example shows how to gradually change the PWM duty cycle from 0% to 100% on **Channel 1 (PA8)** at runtime. This creates a "fading" effect.
+
+> **Note:** The example below uses a Duty Cycle range of 0 to 99, assuming the Timer's **Counter Period (ARR)** is also 99 or a similar lower value for simplicity in the tutorial. For your project where ARR is 999, you should change the loop range to $0$ to $999$.
+
+```c
+int main(void)
+{
+  HAL_Init();
+  SystemClock_Config(); // System clock setup
+  MX_GPIO_Init();        // GPIO init
+  MX_TIM1_Init();        // Timer1 init with PWM
+
+  // Start PWM on Channel 1 (PA8)
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+
+  while (1)
+  {
+    /* Example: Update duty cycle dynamically (Fading Up) */
+    for (int duty = 0; duty <= 99; duty += 10)
+    {
+      // Set the new compare value (duty cycle)
+      __HAL_TIM_SET_COMPARE(&htim1, TIM_CHANNEL_1, duty);
+      // TIM1->CCR1 = duty; is the direct register access equivalent
+
+      HAL_Delay(500);  // Wait 500ms before changing duty cycle
+    }
+
+    // Optional: Add a fading down loop here if needed (e.g., from 99 down to 0)
+
+  }
+}
+```
+
+---
+
 ## Notes and Best Practices
 
 - Use a resistor per LED channel.
 - For common-anode LEDs, invert PWM polarity (active low).
 - Avoid blocking delays in advanced applications; prefer non-blocking timers.
 - For smooth color transitions, sweep CCR values or interpolate in software.
+
+---
+
+# References
+
+[STM32 PWM Timer Example - DeepBlueEmbedded](https://deepbluembedded.com/stm32-pwm-example-timer-pwm-mode-tutorial/)
+
+[PWM in STM32 - ControllersTech](https://controllerstech.com/pwm-in-stm32/)
