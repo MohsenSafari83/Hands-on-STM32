@@ -29,9 +29,11 @@ Each project includes the necessary source code, configuration files (e.g., `.io
 
 ## STM32 Projects Portfolio Roadmap (Sorted by Learning Focus)
 
-|    Category     |     Project Title     | Description                                              | Difficulty |                                                          Link                                                           |
+| Category | Project Title | Description | Difficulty | Link |
 | :-------------: | :-------------------: | :------------------------------------------------------- | :--------: | :---------------------------------------------------------------------------------------------------------------------: |
 | Getting Started | Introduction to STM32 | Basics of STM32, Blue Pill board, CubeIDE & CubeMX setup | 🟢Beginner | [Introduction to STM32 ](https://github.com/MohsenSafari83/Hands-on-STM32/tree/main/Projects/Introduction%20to%20STM32) |
+| GPIO/Basics | **LED Blinking** | First project for configuring a GPIO pin as Output and using `HAL_Delay` for basic timing. | 🟢Beginner | [LED Blinking](https://github.com/MohsenSafari83/Hands-on-STM32/tree/main/Projects/LED%20Blinking) |
+| PWM/Timer | **RGB Traffic Light (PWM)** | Controls an RGB LED using TIM1 PWM channels and implements complex color fading logic for real-time behavior. | 🟡Intermediate | [RGB Traffic Light (PWM)](https://github.com/MohsenSafari83/Hands-on-STM32/tree/main/Projects/Traffic_PWM) |
 
 ---
 
