@@ -203,4 +203,5 @@ int main(void)
 [STM32 PWM Timer Example - DeepBlueEmbedded](https://deepbluembedded.com/stm32-pwm-example-timer-pwm-mode-tutorial/)
 
 [PWM in STM32 - ControllersTech](https://controllerstech.com/pwm-in-stm32/)
+
 [Generate PWM Signal in STM32 Microcontroller-youtuube](https://www.youtube.com/watch?v=iXWyISYmeQ0)
