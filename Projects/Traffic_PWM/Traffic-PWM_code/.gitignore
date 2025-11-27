@@ -1,0 +1,47 @@
+###########################################
+# STM32CubeIDE / Eclipse Project Files
+###########################################
+
+# Eclipse/IDE Project files
+.metadata
+.project
+.cproject
+.settings/
+.build/
+.launches/
+.build-id/
+
+# Keil, IAR, and other IDE/Toolchain files (if applicable)
+*.ewd
+*.ewp
+*.uvoptx
+*.uvprojx
+
+# CubeIDE-specific build folders
+# This folder contains compiled files (.o, .d, .elf, .bin, .map)
+/build
+/Debug
+/Release
+
+# Compiled and Output files
+*.bin
+*.hex
+*.elf
+*.map
+*.o
+*.d
+*.obj
+*.lst
+*.su
+
+# Temporary files created by the linker/compiler
+*.~
+*.bak
+*.swo
+*.swp
+*.dep
+*.log
+
+# Windows specific files
+Thumbs.db
+Desktop.ini
