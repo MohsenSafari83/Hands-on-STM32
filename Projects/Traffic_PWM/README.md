@@ -6,21 +6,23 @@ This project demonstrates how to build a traffic light system using RGB LEDs and
 
 1. [Overview](#overview)
 2. [Concepts Demonstrated in This Project](#concepts-demonstrated-in-this-project)
-   - [PWM (Pulse Width Modulation)](#1-pwm-pulse-width-modulation)
-   - [Timer Configuration (TIM1)](#2-timer-configuration-tim1)
-   - [GPIO Alternate Function Mapping](#3-gpio-alternate-function-mapping)
-   - [Duty Cycle Control](#4-duty-cycle-control)
-   - [Timer-Based State Machine](#5-timer-based-state-machine-traffic-light-logic)
-3. [PWM Configuration Summary](#pwm-configuration-summary-cubemx)
-4. [Firmware Steps](#firmware-steps)
-   - [Initialize TIM1 and GPIO](#1-initialize-tim1-and-gpio)
-   - [Start PWM Outputs](#2-start-pwm-outputs)
-   - [Update LED Intensity](#3-update-led-intensity)
-5. [Hardware Connections](#hardware-connections)
-6. [Required Parts](#required-parts)
-7. [Complete PWM Code Example](#complete-pwm-code-runtime-duty-cycle-update)
-8. [Notes and Best Practices](#notes-and-best-practices)
-9. [References](#references)
+      - [PWM (Pulse Width Modulation)](#1-pwm-pulse-width-modulation)
+      - [Timer Configuration (TIM1)](#2-timer-configuration-tim1)
+      - [GPIO Alternate Function Mapping](#3-gpio-alternate-function-mapping)
+      - [Duty Cycle Control](#4-duty-cycle-control)
+      - [Timer-Based State Machine](#5-timer-based-state-machine-traffic-light-logic)
+3. [PWM Configuration Summary (CubeMX)](#pwm-configuration-summary-cubemx)
+4. [Timer Modes Relevant to PWM in STM32](#timer-modes-relevant-to-pwm-in-stm32)
+      - [Frequency and Duty Cycle Basics](#frequency-and-duty-cycle-basics)
+5. [Firmware Steps](#firmware-steps)
+      - [Initialize TIM1 and GPIO](#1-initialize-tim1-and-gpio)
+      - [Start PWM Outputs](#2-start-pwm-outputs)
+      - [Update LED Intensity](#3-update-led-intensity)
+6. [Hardware Connections](#hardware-connections)
+7. [Required Parts](#required-parts)
+8. [Complete PWM Code Example](#complete-pwm-code-runtime-duty-cycle-update)
+9. [Notes and Best Practices](#notes-and-best-practices)
+10. [References](#references)
 
 ---
 
@@ -105,6 +107,48 @@ The traffic-light behavior is implemented using timing loops or non-blocking cou
 | Output Polarity | Active Low    | Required for common-anode RGB |
 
 ![Parameter_Settings](images/Parameter_Settings.png)
+
+---
+
+# Timer Modes Relevant to PWM in STM32
+
+STM32 microcontrollers include powerful timers that can directly generate **PWM (Pulse Width Modulation)** signals. These timers run independently from the CPU, which means you can produce accurate waveforms without using much processing power.
+
+For PWM, the most commonly used timer modes are:
+
+- **Up-counting mode:** The timer starts counting from 0 and goes up to the value in the **Auto-Reload Register (ARR)**. After reaching this value, the timer resets and starts again.
+- **PWM Mode 1:** The output stays **HIGH** while the counter is less than the compare value **(CCR)**. It switches **LOW** when the counter goes above the CCR value.
+- **PWM Mode 2:** The opposite of Mode 1. The output stays **LOW** when the counter is less than CCR and becomes **HIGH** afterward.
+
+By selecting the right mode, you can decide how your PWM waveform behaves.
+
+![fd](images/timer1_pwm_1.webp)
+
+> The image above shows how the **timer counter** compares with **ARR** and **CCR** to generate a PWM output. The **blue line** is the counter increasing up to ARR. The **red line (CCR)** decides when the output switches from HIGH to LOW. The **green waveform** is the actual PWM signal produced.
+
+---
+
+## Frequency and Duty Cycle Basics
+
+Every PWM signal has two important properties: **frequency** and **duty cycle**.
+
+### 1. PWM Frequency
+
+**PWM frequency** tells how many times the signal completes a full cycle in one second. It depends on three parameters: timer clock, prescaler (PSC), and ARR.
+
+$$\text{PWM frequency} = \frac{\text{Timer clock}}{(\text{PSC} + 1) \times (\text{ARR} + 1)}$$
+
+### 2. Duty Cycle
+
+**Duty cycle** defines the percentage of ON-time in each cycle. It depends on the compare register **(CCR)** value.
+
+$$\text{Duty cycle (\%)} = \frac{\text{CCR}}{(\text{ARR} + 1)} \times 100$$
+
+For example, if $\text{ARR} = 999$ and $\text{CCR} = 500$, then the duty cycle $= 50\%$. This means the signal stays HIGH for half the time and LOW for the other half.
+
+![d](images/timer1_pwm_2.webp)
+
+> The image above shows PWM signals with $25\%$, $50\%$, and $75\%$ duty cycles.
 
 ---
 
@@ -203,5 +247,3 @@ int main(void)
 [STM32 PWM Timer Example - DeepBlueEmbedded](https://deepbluembedded.com/stm32-pwm-example-timer-pwm-mode-tutorial/)
 
 [PWM in STM32 - ControllersTech](https://controllerstech.com/pwm-in-stm32/)
-
-[Generate PWM Signal in STM32 Microcontroller-youtuube](https://www.youtube.com/watch?v=iXWyISYmeQ0)
