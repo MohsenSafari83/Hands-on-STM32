@@ -4,25 +4,40 @@ This project demonstrates how to build a traffic light system using RGB LEDs and
 
 # Table of Contents
 
-1. [Overview](#overview)
-2. [Concepts Demonstrated in This Project](#concepts-demonstrated-in-this-project)
-      - [PWM (Pulse Width Modulation)](#1-pwm-pulse-width-modulation)
-      - [Timer Configuration (TIM1)](#2-timer-configuration-tim1)
-      - [GPIO Alternate Function Mapping](#3-gpio-alternate-function-mapping)
-      - [Duty Cycle Control](#4-duty-cycle-control)
-      - [Timer-Based State Machine](#5-timer-based-state-machine-traffic-light-logic)
-3. [PWM Configuration Summary (CubeMX)](#pwm-configuration-summary-cubemx)
-4. [Timer Modes Relevant to PWM in STM32](#timer-modes-relevant-to-pwm-in-stm32)
-      - [Frequency and Duty Cycle Basics](#frequency-and-duty-cycle-basics)
-5. [Firmware Steps](#firmware-steps)
-      - [Initialize TIM1 and GPIO](#1-initialize-tim1-and-gpio)
-      - [Start PWM Outputs](#2-start-pwm-outputs)
-      - [Update LED Intensity](#3-update-led-intensity)
-6. [Hardware Connections](#hardware-connections)
-7. [Required Parts](#required-parts)
-8. [Complete PWM Code Example](#complete-pwm-code-runtime-duty-cycle-update)
-9. [Notes and Best Practices](#notes-and-best-practices)
-10. [References](#references)
+- [PWM-Based Traffic Light Project](#pwm-based-traffic-light-project)
+
+- [Overview](#overview)
+
+- [Concepts Demonstrated in This Project](#concepts-demonstrated-in-this-project)
+
+  - [1. PWM (Pulse Width Modulation)](#1-pwm-pulse-width-modulation)
+  - [2. Timer Configuration (TIM1)](#2-timer-configuration-tim1)
+  - [3. GPIO Alternate Function Mapping](#3-gpio-alternate-function-mapping)
+  - [4. Duty Cycle Control](#4-duty-cycle-control)
+  - [5. Timer-Based State Machine](#5-timer-based-state-machine-traffic-light-logic)
+
+- [PWM Configuration Summary (CubeMX)](#pwm-configuration-summary-cubemx)
+
+- [Timer Modes Relevant to PWM in STM32](#timer-modes-relevant-to-pwm-in-stm32)
+
+  - [1. PWM Frequency](#1-pwm-frequency)
+  - [2. Duty Cycle](#2-duty-cycle)
+
+- [Firmware Steps](#firmware-steps)
+
+  - [1. Initialize TIM1 and GPIO](#1-initialize-tim1-and-gpio)
+  - [2. Start PWM Outputs](#2-start-pwm-outputs)
+  - [3. Update LED Intensity](#3-update-led-intensity)
+
+- [Hardware Connections](#hardware-connections)
+
+- [Required Parts](#required-parts)
+
+- [Complete PWM Code Example](#complete-pwm-code-runtime-duty-cycle-update)
+
+- [Notes and Best Practices](#notes-and-best-practices)
+
+- [References](#references)
 
 ---
 
